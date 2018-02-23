@@ -1,0 +1,94 @@
+<html>
+  <head>
+    {% include "components/default/admin-panel-header.html.twig" %}
+    <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/get_dashboard.js"></script>
+    <style>
+      .chart-text {
+        font: 16px/1.4em "Montserrat", Arial, sans-serif;
+        fill: #000;
+        -moz-transform: translateY(0.25em);
+        -ms-transform: translateY(0.25em);
+        -webkit-transform: translateY(0.25em);
+        transform: translateY(0.25em);
+      }
+
+      .chart-number {
+        font-size: 0.6em;
+        line-height: 1;
+        text-anchor: middle;
+        -moz-transform: translateY(-0.25em);
+        -ms-transform: translateY(-0.25em);
+        -webkit-transform: translateY(-0.25em);
+        transform: translateY(-0.25em);
+      }
+
+      .chart-label {
+        font-size: 0.2em;
+        text-transform: uppercase;
+        text-anchor: middle;
+        -moz-transform: translateY(0.7em);
+        -ms-transform: translateY(0.7em);
+        -webkit-transform: translateY(0.7em);
+        transform: translateY(0.7em);
+      }
+    </style>
+  </head>
+
+  <body>
+      <!-- Include the Admin Panel Navigation bar-->
+      {% include "components/default/admin-panel-nav-bar.html.twig" %}
+      <br><br>
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="col s3">
+            <div class="card white">
+              <div class="card-content black-text">
+                <span class="card-title">Total SMS</span>
+              </div>            
+            </div>
+          </div>
+          <div class="col s3">
+              <div class="card white">
+                <div class="card-content black-text">
+                  <span class="card-title">Successful SMS</span>
+                </div>            
+              </div>
+          </div>
+          <div class="col s3">
+            <div class="card white">
+              <div class="card-content black-text">
+                <span class="card-title">Failed SMS</span>
+              </div>            
+            </div>
+          </div>
+          <div class="col s3">
+              <div class="card white">
+                <div class="card-content black-text">
+                  <span class="card-title">Total Campaigns</span>
+                </div>            
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <!--<svg width="15%" height="15%" viewBox="0 0 42 42" class="donut">
+          <circle class="donut-hole" cx="21" cy="21" r="15.91549" fill="#fff"></circle>
+          <circle class="donut-ring" cx="21" cy="21" r="15.91549" fill="transparent" stroke="#B71427" stroke-width="3"></circle>
+        
+          <circle class="donut-segment" cx="21" cy="21" r="15.91549" fill="transparent" stroke="#A8CD1B" stroke-width="3" stroke-dasharray="80 20" stroke-dashoffset="25"></circle>
+          <g class="chart-text">
+              <text x="50%" y="50%" class="chart-number">
+                80%
+              </text>
+              <text x="50%" y="50%" class="chart-label">
+                Success
+              </text>
+          </g>
+      </svg>-->
+
+      <div id="mhaDashboardResult"></div>
+      <div id="singtelDashboardResult"></div>
+    </body>
+  </html>
+
+

@@ -1,0 +1,30 @@
+
+
+
+
+{% block scripts %}
+        {% block scripts_page %}
+        <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/get_campaigns.js"></script>
+        <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/DataTables/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/DataTables/js/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/DataTables/js/dataTables.bootstrap.min.js"></script>
+        <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/DataTables/js/buttons.html5.min.js"></script>
+        <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/DataTables/js/jszip.min.js"></script>
+        <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/DataTables/js/buttons.colVis.min.js"></script>
+        <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/DataTables/js/buttons.bootstrap.min.js"></script>
+        
+{% endblock %}
+{% endblock %}
+
+
+{% block stylesheets %}
+{% block stylesheets_page %}
+        
+                <link rel="stylesheet" type="text/css" href="{{site.uri.public}}/mywebsite/js/DataTables/css/dataTables.bootstrap.min.css"/>
+                <link rel="stylesheet" type="text/css" href="{{site.uri.public}}/mywebsite/js/DataTables/css/buttons.bootstrap.min.css"/>
+        
+
+<div id="Result"></div>
+
+{% endblock %}
+{% endblock %}

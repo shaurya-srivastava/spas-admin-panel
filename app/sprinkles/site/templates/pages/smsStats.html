@@ -1,0 +1,71 @@
+<html>
+    <head> 
+      {% include "components/default/admin-panel-header.html.twig" %}  
+      
+    </head>
+  <body>
+    <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/get_smsStats.js"></script>
+      <!-- Include the Admin Panel Navigation bar-->
+      {% include "components/default/admin-panel-nav-bar.html.twig" %}
+      
+      <br><br>
+      <form class="col s12" id="inputForm" name="inputForm" method="POST" onsubmit="">
+        <div class="row container">
+            <div id="alertId_div" class="input-field col s4 offset-s4">
+                <input id="alertId" type="text" class="validate">
+                <label for="alertId">Alert ID</label>
+            </div>
+          <!--
+          <ul class="collapsible col s10 offset-s1" data-collapsible="expanded">
+                  <li>
+                      <div class="collapsible-header active">Time Filters</div>
+                      <div class="collapsible-body">
+                          <div id="stsd" class="input-field col s3">
+                              <label for="startTimeStartD" data-required="true">startTime Range Start Date</label>
+                              <input id="startTimeStartD" type="date" class="datepicker">
+                              
+                          </div>
+                          <div id="stst" class="input-field col s3">
+                            <input id="startTimeStartT" type="text" class="time" maxlength="5">
+                            <label for="startTimeStartT">startTime Range Start Time</label>
+                          </div>
+                          <div id="sted" class="input-field col s3">
+                              <input id="startTimeEndD" type="date" class="datepicker">
+                              <label for="startTimeEndD">startTime Range End Date</label>
+                          </div>
+                          <div id="stet" class="input-field col s3">
+                            <input id="startTimeEndT" type="text" class="time" maxlength="5">
+                            <label for="startTimeEndT">startTime Range End Time</label>
+                          </div>
+                      </div>
+                  </li>
+            </ul>
+          -->
+
+
+        </div>
+        <div class="row container"> 
+          <div class="center">
+            <button class="btn-large waves-effect waves-light" type="submit" name="action">Search</button>
+          </div>                  
+        </div>
+      </form>
+      <span class="black-text"><h5 id="hostnameAndFilenameResult"></h5></span>
+      <div id="wait" class="row container center">
+        <div class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-red-only ">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="Result" class="row"></div>
+             
+

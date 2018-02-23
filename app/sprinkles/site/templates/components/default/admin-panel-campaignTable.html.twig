@@ -1,0 +1,21 @@
+{% block scripts %}
+        {% block scripts_page %}
+                
+                <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/DataTables2/js/jquery.dataTables.min.js"></script>
+                <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/DataTables2/js/dataTables.buttons.min.js"></script>
+                <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/DataTables2/js/dataTables.foundation.min.js"></script>
+                <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/DataTables2/js/buttons.html5.min.js"></script>
+                <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/DataTables2/js/jszip.min.js"></script>
+                <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/DataTables2/js/buttons.colVis.min.js"></script>
+                <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/DataTables2/js/buttons.foundation.min.js"></script>
+        {% endblock %}
+{% endblock %}
+
+
+{% block stylesheets %}
+        {% block stylesheets_page %}
+                <link rel="stylesheet" type="text/css" href="{{site.uri.public}}/mywebsite/js/DataTables2/css/dataTables.foundation.min.css"/>
+                <link rel="stylesheet" type="text/css" href="{{site.uri.public}}/mywebsite/js/DataTables2/css/buttons.foundation.min.css"/>
+                <div id="Result"></div>
+        {% endblock %}
+{% endblock %}

@@ -1,0 +1,79 @@
+<html>
+    <head> 
+        {% include "components/default/admin-panel-header.html.twig" %}
+        <title>Campaign Records</title>
+        <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/get_campaigns.js"></script>
+    </head>
+  <body>
+      <!-- Include the Admin Panel Navigation bar-->
+      
+      {% include "components/default/admin-panel-nav-bar.html.twig" %}
+      <br><br>
+      <form class="col s12" id="inputForm" name="inputForm" method="POST" onsubmit="">
+        <div class="row container"> 
+          <div class="input-field col s3" id="selectStatus">
+              <select value="test" name="selectorStatus" id="selectorStatus">
+                <option disabled selected> Choose Campaign Status</option>
+                  <option value="0">Show Campaigns registered but NOT ready to start</option>
+                  <option value="1">Show Campaigns ready waiting to start</option>
+                  <option value="2">Show Campaigns in progress</option>
+                  <option value="3">Show Campaigns ended</option>
+                  <option value="4">Show Campaigns cancelled</option>
+                  <option value="5">Show Campaigns with error</option>
+                  <option value="all_past">Show All Campaigns on Date</option>
+                <label for="activeSelector"> Select </label>
+              </select>
+          </div>
+          <div class="input-field col s3" id="selectMode">
+            <select value="test" name="selectorMode" id="selectorMode">
+              <option selected value=""> Choose Campaign Mode</option>
+                <option value="0">0-Adhoc</option>
+                <option value="1">1-On demand</option>
+                <option value="2">2-Periodic</option>
+              <label for="activeSelector"> Select </label>
+            </select>
+        </div>
+        <div class="input-field col s3" id="selectType">
+          <select value="test" name="selectorType" id="selectorType">
+            <option selected value=""> Choose Campaign Type</option>
+              <option value="0">0-In area subscriber only</option>
+              <option value="1">1-Whitelist only</option>
+              <option value="2">2-Both in area subscriber and whitelist</option>
+              <option value="3">3-Whitelist in the area</option>
+            <label for="activeSelector"> Select </label>
+          </select>
+      </div>
+      <div id="date_div" class="input-field col s3">
+          <input id="date_input" type="date" class="datepicker">                  
+          <label for="Date" data-required="true">Date</label>
+      </div>
+      </div>
+      <div class="row container"> 
+          <div class="center">
+            <button class="btn-large waves-effect waves-light" type="submit" name="action">Search</button>
+          </div>
+        </div>
+      </form>
+      <span class="black-text"><h5 id="hostnameAndFilenameResult"></h5></span>
+        <div id="wait" class="row container center">
+            <div class="preloader-wrapper big active">
+              <div class="spinner-layer spinner-red-only ">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                    <div class="circle"></div>
+                  </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% include "components/default/admin-panel-campaignTable.html.twig" %}
+          <!--<div id="Result" class="col 10"></div>-->
+          
+        
+
+        
+        

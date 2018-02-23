@@ -70,13 +70,19 @@ class ServicesProvider
                 $authorizer = $c->authorizer;
 
                 $currentUser = $c->authenticator->user();
-
+                /** 
+                *if ($authorizer->checkAccess($currentUser, 'uri_dashboard')) {
+                *    return $response->withHeader('UF-Redirect', $c->router->pathFor('dashboard'));
+                *} elseif ($authorizer->checkAccess($currentUser, 'uri_account_settings')) {
+                *    return $response->withHeader('UF-Redirect', $c->router->pathFor('settings'));
+                *} else {
+                *    return $response->withHeader('UF-Redirect', $c->router->pathFor('index'));
+                *}
+                */
                 if ($authorizer->checkAccess($currentUser, 'uri_dashboard')) {
                     return $response->withHeader('UF-Redirect', $c->router->pathFor('dashboard'));
-                } elseif ($authorizer->checkAccess($currentUser, 'uri_account_settings')) {
-                    return $response->withHeader('UF-Redirect', $c->router->pathFor('settings'));
-                } else {
-                    return $response->withHeader('UF-Redirect', $c->router->pathFor('index'));
+                }else{
+                    return $response->withHeader('UF-Redirect', $c->router->pathFor('indexAdminPanel'));
                 }
             };
         };
