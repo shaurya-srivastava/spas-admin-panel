@@ -1,4 +1,4 @@
-# Admin Panel Based on UserFrostings by [Alex Weissman](https://alexanderweissman.com)
+# Admin Panel Based on UserFrostings
 
 [https://www.userfrosting.com](https://www.userfrosting.com)
 
