@@ -121,6 +121,22 @@ class PageController extends SimpleController
             return $response->withRedirect($this->ci->router->pathFor('loginAdminPanel'), 302);
 	    }
     }
+
+    public function pageDrillModuleAdminPanel($request, $response, $args){
+        $ms = $this->ci->alerts;
+        /** @var UserFrosting\Sprinkle\Account\Model\User $currentUser */
+        $currentUser = $this->ci->currentUser;
+        /** @var UserFrosting\Sprinkle\Account\Authenticate\Authenticator $authenticator */
+        $authenticator = $this->ci->authenticator;
+
+        // Return 200 success if user is already logged in
+        if ($authenticator->check()) {
+            return $this->ci->view->render($response, 'pages/drillModule.html');
+        }else{
+            return $response->withRedirect($this->ci->router->pathFor('loginAdminPanel'), 302);
+	    }
+    }
+
     public function pageTestAdminPanel($request, $response, $args){
         $ms = $this->ci->alerts;
         /** @var UserFrosting\Sprinkle\Account\Model\User $currentUser */

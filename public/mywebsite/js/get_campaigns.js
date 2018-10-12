@@ -13,16 +13,18 @@ $(document).ready(function(){
 		}
 		$(this).val(foo);
 	});
-	
-	$('select').material_select();
+	$(".brand-logo").css({"height": "100%"});
+	$('select').formSelect();
 	$('#wait').hide();
 	
-	$('.datepicker').pickadate({
-            selectMonths: true,
-            selectYears: true,
-            format: 'yyyy-mm-dd',
-			min: new Date(2017,01,01)
-    });
+	$('.datepicker').datepicker();
+	var elem = document.querySelector('.datepicker');
+	var instance = M.Datepicker.init(elem, {
+		format: 'yyyy-mm-dd',
+		min: new Date(2017,01,01),
+		showClearBtn: true
+	});
+	
 	
 	$("form#inputForm").submit(function(){
 		var status = $('select[name=selectorStatus]').val();

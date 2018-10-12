@@ -9,7 +9,7 @@
       
       {% include "components/default/admin-panel-nav-bar.html.twig" %}
       <br><br>
-      <form class="col s12" id="inputForm" name="inputForm" method="POST" onsubmit="">
+      <form id="inputForm" name="inputForm" method="POST" onsubmit="">
         <div class="row container"> 
           <div class="input-field col s3" id="selectStatus">
               <select value="test" name="selectorStatus" id="selectorStatus">
@@ -44,7 +44,7 @@
           </select>
       </div>
       <div id="date_div" class="input-field col s3">
-          <input id="date_input" type="date" class="datepicker">                  
+          <input id="date_input" type="text" class="datepicker">                  
           <label for="Date" data-required="true">Date</label>
       </div>
       </div>

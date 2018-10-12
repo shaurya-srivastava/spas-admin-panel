@@ -12,6 +12,7 @@ $app->get('/settings', 'UserFrosting\Sprinkle\Site\Controller\AccountControllerA
 $app->get('/campaign-records', 'UserFrosting\Sprinkle\Site\Controller\PageController:pageCampaignRecordsAdminPanel');
 $app->get('/sms-records', 'UserFrosting\Sprinkle\Site\Controller\PageController:pageSMSRecordsAdminPanel');
 $app->get('/sms-stats', 'UserFrosting\Sprinkle\Site\Controller\PageController:pageSMSStatsAdminPanel');
+$app->get('/drill-module', 'UserFrosting\Sprinkle\Site\Controller\PageController:pageDrillModuleAdminPanel');
 $app->get('/test', 'UserFrosting\Sprinkle\Site\Controller\PageController:pageTestAdminPanel');
 
 ?>

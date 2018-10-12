@@ -113,7 +113,7 @@ public function loginAdminPanel($request, $response, $args)
        
                return $redirectOnLogin($request, $response, $args);
 
-	}
+    }
 
 public function logoutAdminPanel(Request $request, Response $response, $args)
     {

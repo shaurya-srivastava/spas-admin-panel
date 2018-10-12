@@ -1,0 +1,174 @@
+<html>
+    <head> 
+        {% include "components/default/admin-panel-header.html.twig" %}
+        <title>Drill Module</title>
+        <link type="text/css" rel="stylesheet" href="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.css"/>
+        <link href="{{site.uri.public}}/mywebsite/node_modules/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
+        <script src="{{site.uri.public}}/mywebsite/node_modules/jsoneditor/dist/jsoneditor.min.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/node_modules/jssha/src/sha.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/blockui/jquery.blockUI.js"></script>
+        <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/get_drillModule.js"></script>
+        <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/env.js"></script>
+        <script type="text/javascript" src="/whitelistJson.js"></script>
+        <script type="text/javascript" src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.js"></script>
+
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/Leaflet.draw.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/Leaflet.Draw.Event.js"></script>
+        <link rel="stylesheet" href="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/leaflet.draw.css"/>
+
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/Toolbar.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/Tooltip.js"></script>
+
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/ext/GeometryUtil.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/ext/LatLngUtil.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/ext/LineUtil.Intersect.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/ext/Polygon.Intersect.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/ext/Polyline.Intersect.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/ext/TouchEvents.js"></script>
+
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/draw/DrawToolbar.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/draw/handler/Draw.Feature.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/draw/handler/Draw.SimpleShape.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/draw/handler/Draw.Polyline.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/draw/handler/Draw.Marker.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/draw/handler/Draw.Circle.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/draw/handler/Draw.CircleMarker.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/draw/handler/Draw.Polygon.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/draw/handler/Draw.Rectangle.js"></script>
+
+
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/edit/EditToolbar.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/edit/handler/EditToolbar.Edit.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/edit/handler/EditToolbar.Delete.js"></script>
+
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/Control.Draw.js"></script>
+
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/edit/handler/Edit.Poly.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/edit/handler/Edit.SimpleShape.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/edit/handler/Edit.Rectangle.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/edit/handler/Edit.Marker.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/edit/handler/Edit.CircleMarker.js"></script>
+        <script src="{{site.uri.public}}/mywebsite/js/leaflet/leaflet.draw/edit/handler/Edit.Circle.js"></script>
+    </head>
+  <body>
+    <!-- Include the Admin Panel Navigation bar-->
+    {% include "components/default/admin-panel-nav-bar.html.twig" %}
+    <span class="black-text"><h5 id="hostnameAndFilenameResult"></h5></span>
+      <main>
+        <div class="row">          
+          <div class="col s6">
+            <div class="col s12">
+              <p id="current_user" hidden>{{current_user.user_name}}</p>
+              <form class="col s12" id="inputForm" name="inputForm" method="POST" onsubmit="">
+                <div class="col s4">
+                    <select value="test" name="selectorCommand" id="selectorCommand">
+                        <option disabled selected>Select command</option>
+                          <option value="preCounting">preCounting</option>
+                          <option value="createAlert Adhoc">createAlert Adhoc</option>
+                          <option value="createAlert On-demand">createAlert On-demand</option>
+                          <option value="createAlert Periodic">createAlert Periodic</option>
+                          <!--<option value="addCircle">addCircle</option>-->
+                          <!--<option value="addPolygon">addPolygon</option>-->
+                          <!--<option value="addWhitelist">addWhitelist</option>-->
+                          <option value="alertStart">alertStart</option>
+                          <option value="alertStop">alertStop</option>
+                          <option value="alertStatus">alertStatus</option>
+                          <option value="alertSummary">alertSummary</option>
+                          <!--<option value="detailReport">detailReport</option>-->
+                      </select>
+                </div>
+                <div class="col s2">
+                  <button id="query" class="waves-effect waves-light btn" name="action">Query</button>
+                </div>
+                <div class="col s2">
+                    <a class="btn tooltipped" data-position="bottom" data-tooltip="
+                        <br>WhitelistInfo <br>
+                        0 In-Area Subscribers only<br>
+                        1 Whitelist Subscribers only<br>
+                        2 In-Area AND Whitelist Subscribers<br>
+                        3 Whitelist Subscribers IN the Area<br>
+                        <br>
+                        <br>PriorityInfo<br>
+                        0 Filter Blacklist<br>
+                        1 Do NOT Filter Blacklist<br>
+                        <br>
+                        <br>SubTypeInfo<br>
+                        0 Local Subscribers<br>
+                        1 Inbound Subscribers<br>
+                        2 Both Loacal and Inbound Subscribers<br>
+                        <br>">Info</a>
+                </div>                
+                <div id="wait" class="col s4">
+                  <div class="preloader-wrapper small active">
+                    <div class="spinner-layer spinner-red-only ">
+                      <div class="circle-clipper left">
+                          <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                          <div class="circle"></div>
+                        </div>
+                      <div class="circle-clipper right">
+                          <div class="circle"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col s6">
+              <div id="jsoneditor" style="height: 78%;" ></div>
+            </div>
+            <div class="col s6">
+              <div id="jsoneditor2" style="height: 78%;"></div>
+            </div>
+            <div class="col s12">
+              <div id="Result"></div>
+            </div>
+          </div>
+          <div id="map" class="col s6">  
+            <div class="card white">
+              <div id="mapid" style="width: inherit; height: 85%;"></div>
+            </div>
+          </div>
+          <br>
+        </div>
+      </main>
+      <div id="modal1" class="modal">
+          <div class="modal-content">
+            <form class="col s12" id="loginForm" name="loginForm" method="POST" onsubmit="">
+              <div class="row">
+                <div class="input-field col s10 offset-s1">
+                  <input id="username" type="text">
+                  <label for="username">User Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s10 offset-s1">
+                  <input id="password" type="password">
+                  <label for="password">Password</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s10 offset-s1">
+                  <input id="otp" type="text">
+                  <label for="otp">One Time Password</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                <div class="center">
+                  <button id="login" class="waves-effect waves-light btn" type="submit" name="action3">Login</button>
+                </div>  
+              </div>
+            </div>
+            </form>
+          </div>
+      </div>
+  </body>
+</html>
+
+          
+        
+
+        
+        

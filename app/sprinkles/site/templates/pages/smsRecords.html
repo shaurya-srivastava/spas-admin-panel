@@ -9,15 +9,15 @@
       {% include "components/default/admin-panel-nav-bar.html.twig" %}
       
       <br><br>
-      <form class="col s12" id="inputForm" name="inputForm" method="POST" onsubmit="">
+      <form id="inputForm" name="inputForm" method="POST" onsubmit="">
         <div class="row container"> 
           <div id="startdate_div" class="input-field col s3 offset-s3">
-            <input id="startdate_input" type="date" class="datepicker">                  
+            <input id="startdate_input" type="text" class="datepicker">                  
             <label for="Start Date" data-required="true">Start Date</label>
           </div>
           <div id="enddate_div" class="input-field col s3 ">
-            <input id="enddate_input" type="date" class="datepicker">                  
-            <label for="End Date" data-required="true">End Date</label>
+            <input id="enddate_input" type="text" class="datepicker">                  
+              <label for="End Date" data-required="true">End Date</label>
           </div>
         </div>
         <div class="row container"> 

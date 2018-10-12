@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $('.sidenav').sidenav();
 	$('.time').keyup(function() {
 		if (/\D/g.test(this.value)){
 			// Filter non-digits from input value.
@@ -7,7 +8,7 @@ $(document).ready(function(){
 		//var foo = $(this).val(); // remove hyphens
 		//$(this).val(this.value);
     });
-    
+    $(".brand-logo").css({"height": "100%"});
     var mhaUser = "userRole:userName";
     var singtelUser = "sat:sat";
 	var type, url, data, error, success;

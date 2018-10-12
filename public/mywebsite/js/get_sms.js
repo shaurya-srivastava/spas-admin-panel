@@ -1,38 +1,23 @@
-
 $(document).ready(function(){
-	$('.time').keyup(function() {
-		if (/\D/g.test(this.value)){
-			// Filter non-digits from input value.
-			this.value = this.value.replace(/\D/g, '');
-		}
-		var foo = $(this).val().split(":").join(""); // remove hyphens
-		if (foo.length > 0 && foo.length < 5) {
-			foo = foo.match(new RegExp('.{1,2}', 'g')).join(":");
-		}else{
-
-		}
-		$(this).val(foo);
-	});
-	//setTimeout(function() {
-	//	window.location.href = 'http://user:user@10.254.99.61/cgi-bin/logout.cgi'; 
-	//	console.log("timeout");
-	//}, 3000);
-	$('select').material_select();
+	$(".brand-logo").css({"height": "100%"});
+	$('select').formSelect();
 	$('#wait').hide();
-	var today = new Date();
-	//var olddate = new Date();
-	//olddate.setDate(olddate.getDate() - 7);
-	//var olddate2 = olddate.getFullYear()+'-'+(olddate.getMonth()+1)+'-'+olddate.getDate();
-	var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-	//$('#startdate_input').attr('data-value','olddate2');
-	$('#enddate_input').attr('data-value','date');
-	console.log(date);
-	$('.datepicker').pickadate({
-            selectMonths: true,
-            selectYears: true,
-            format: 'yyyy-mm-dd',
-			min: new Date(2017,01,01)
-    });
+
+	$('#startdate_input').datepicker();
+	$('#enddate_input').datepicker();
+	var elem = document.querySelector('#startdate_input');
+	var elem2 = document.querySelector('#enddate_input');
+	var instance = M.Datepicker.init(elem, {
+		format: 'yyyy-mm-dd',
+		min: new Date(2017,01,01),
+		showClearBtn: true
+	});
+	var instance2 = M.Datepicker.init(elem2, {
+		format: 'yyyy-mm-dd',
+		min: new Date(2017,01,01),
+		showClearBtn: true
+	});
+	instance2.setDate(new Date());
 
 	$("form#inputForm").submit(function(){
 		
